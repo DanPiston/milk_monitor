@@ -11,7 +11,7 @@ def main():
 
     print ('The baby drank {} ounces!'.format(entry.amount_consumed))
 
-    entry.log_db(starting_ounces, ending_ounces, total)
+    entry.log_db()
     
 if __name__ == '__main__':
     main()
