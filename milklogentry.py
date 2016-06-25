@@ -1,4 +1,5 @@
 import sqlite3
+import time
 
 MILKDB = 'milk.db'
 
@@ -16,11 +17,12 @@ class MilkLogEntry(object):
     def log_db(self):
         connection = sqlite3.connect(MILKDB)
         sql = """insert into milk_table values (
-                 :starting_ounces, :ending_ounces, :total_ounces)"""
+                 :starting_ounces, :ending_ounces, :total_ounces, :time)"""
         args = {
                 'starting_ounces':self.starting_ounces,
                 'ending_ounces':self.ending_ounces,
-                'total_ounces':self.amount_consumed}
+                'total_ounces':self.amount_consumed,
+                'time':time.strftime('%H:%M:%S')}
         connection.execute(sql, args)
         connection.commit()
         print('DB has been updated!')
