@@ -1,7 +1,8 @@
 import sqlite3
 import time
+import os
 
-MILKDB = 'milk.db'
+MILKDB = os.environ['MILKED']
 
 class MilkLogEntry(object):
     def __init__(self, starting_ounces):
